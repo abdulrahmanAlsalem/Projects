@@ -21,14 +21,64 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="header">
+            <a class="logo" href="/"><img src="{{ asset('logo.png')}}" alt="logo" style="width: auto; height: 60px;"></a>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Home</a></li>
+                    @auth
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">My Profile</a></li>
+                    @endauth
+                    <li><a href="#">contact us</a></li>
+                </ul>
+    
+            </nav>
+            <div class="btns">
+                @guest
+                
+                    <a class="btn" href="{{ route('login') }}">{{ __('Login') }}</a>
+                
+                @if (Route::has('register'))
+                    
+                        <a class="btn" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    
+                @endif
+            @else
+                
+                    <a id="navbarDropdown" class="hello" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    
+                        <a class="btn" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    
+                
+            @endguest
+                {{-- <a class="hello" href=#>Hello Khalid </a>
+                <a class="btn" href="/signin.html">Log out</a>  --}}
+                @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+                @endif
+                
+            </div>
+    
+        </div>
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Volunteering Platform
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -70,7 +120,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
         <main class="py-4">
             @yield('content')
