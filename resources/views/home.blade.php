@@ -1,41 +1,177 @@
 @extends('layouts.app')
 
-{{-- @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <div class="header">
-                    <a class="logo" href="/"><img src="images/logo.png" alt="logo" style="width: auto; height: 60px;"></a>
-                    <nav>
-                        <ul class="nav__links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">My Profile</a></li>
-                            <li><a href="#">content us</a></li>
-                        </ul>
-            
-                    </nav>
-                    <div class="btns">
-                        <a class="hello" href=#>Hello Khalid </a>
-                        <a class="btn" href="/signin.html">Log out</a> 
-                        @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                        @endif
+@section('content')
+
+@if (Auth::user()->role == 'Orgnaization')
+	<head>
+		<title>Volunteering Platform</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="{{ asset('css/main.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/forms.css') }}" rel="stylesheet">
+	</head>
+	<body class="is-preload">
+
+        <section id="banner">
+            <div class="inner">
+                <h2 class="vtitle"> Welcome {{ Auth::user()->name }} organization </h2>
+                <h1 class="vtitle">As an organization you can Add and share new volunteer event</h1>
+                
+            </div>
+        </section>
+
+    <!-- Highlights -->
+        <section class="wrapper">
+            <div class="inner">
+                <center><p class="h2-title">Adding a new event </p></center>
+                <!-- <div class="highlights"> -->
+                    <!-- 1 -->
+                    <div class="addevent-form" >
+                        <form action="#">
+                            <p class="event_info">
+                          <label class="event_name" for="eventname">Enter the event name :
+                          <input type="text" id="eventname" name="eventname" placeholder=""></label>
                         
-                    </div>
-            
-                </div>
+                          <label class="event_place" for="eventplace">Where will the event be?
+                          <input type="text" id="eventplace" name="eventplace" placeholder=""></label>
+                            <p class="event_date">
+                          <label class="event_date" for="startdate">event Start date
+                          <input type="date">
+                          <label class="event_date" for="enddate">event End date
+                          <input type="date"></label>
+                            </p>
 
-                <div class="card-body">
+                            <label class="Volunteernumber" for="Volunteernumber"> Enter the Volunteers number
+                            <input type="number" for="Volunteernumber"></label>
 
-                    {{ __('You are logged in!') }}
+                        </p>
+                            
+                        
+                          <input class="submiteventform" type="submit" value="Submit Now">
+                        </form>
+                      </div>
+                    
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
+        </section>
+
+    <!-- CTA -->
+        <section id="cta" class="wrapper">
+            <div class="inner">
+                <h2>You Can easly share the new event</h2>
+                <p class="footer-org">
+                <pre>1.Click Add event button                  2.Fill the event form                  3.Share it to Volunteers</pre>
+               
+                </p>
+            </div>
+        </section>
+
+    
+    <!-- Footer -->
+ @else  
+
+<head>
+    <title>Volunteering Platform</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/cards.css') }}" rel="stylesheet">
+
+    
+</head>
+<body>
+    
+		<!-- Banner -->
+		
+			<section id="banner">
+				<div class="inner">
+                <h2 class="vtitle"> Welcome {{ Auth::user()->name }} </h2>
+					<h1 class="vtitle">In Volunteering Platform</h1>
+					<p>As a volunteer you can easily join any available event
+					</p>
+				</div>
+			</section>
+
+		<!-- Highlights -->
+			<section class="wrapper">
+				<div class="inner">
+					<center><p class="h-title">Volunteer avaiable Events :</p></center>
+					
+					<div class="highlights">
+					
+						<!-- Events Card (each section has one event card .. ) -->
+						<section>
+							<div class="content">
+                                <div class="Events_card">
+                                    <header> <img src="/images/Group9.png" alt="" style="width:100%"></header> 
+
+                                    <div class="Event_container">
+                                    <p class="Event_title"> Event name</p>
+                                    <p class="Event_dis">Brief discription</p>
+                                    <div class="Event_details">
+                                        <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">20</p>
+                                        <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">. 3 Sep</p> 
+                                    </div>
+                                    </div>
+                                    <button class="joiniing">Join this event</button>
+                                </div>
+							</div>
+                        </section>
+                        <section>
+							<div class="content">
+                                <div class="Events_card">
+                                    <header> <img src="/images/Group9.png" alt="" style="width:100%"></header> 
+
+                                    <div class="Event_container">
+                                    <p class="Event_title"> Event name</p>
+                                    <p class="Event_dis">Brief discription</p>
+                                    <div class="Event_details">
+                                        <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">20</p>
+                                        <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">. 3 Sep</p> 
+                                    </div>
+                                    </div>
+                                    <button class="joiniing">Join this event</button>
+                                </div>
+							</div>
+                        </section>
+                        <section>
+							<div class="content">
+                                <div class="Events_card">
+                                    <header> <img src="/images/Group9.png" alt="" style="width:100%"></header> 
+
+                                    <div class="Event_container">
+                                    <p class="Event_title"> Event name</p>
+                                    <p class="Event_dis">Brief discription</p>
+                                    <div class="Event_details">
+                                        <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">20</p>
+                                        <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">. 3 Sep</p> 
+                                    </div>
+                                    </div>
+                                    <button class="joiniing">Join this event</button>
+                                </div>
+							</div>
+                        </section>
+                        
+                        
+                        
+					
+						
+					</div>
+				</div>
+			</section>
+
+		<!-- CTA -->
+			<section id="cta" class="wrapper">
+				<div class="inner">
+					
+				</div>
+			</section>
+
+        </body>
+@endif
+@endsection 

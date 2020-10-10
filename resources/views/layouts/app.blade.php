@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
 </head>
 <body>
     <div id="app">
@@ -28,7 +29,8 @@
                     <li><a href="#">Home</a></li>
                     @auth
                     <li><a href="#">Events</a></li>
-                    <li><a href="#">My Profile</a></li>
+                    
+                    <li><a href="{{ asset('volProfile.blade.php') }}">Profile</a></li>
                     @endauth
                     <li><a href="#">contact us</a></li>
                 </ul>
@@ -126,5 +128,11 @@
             @yield('content')
         </main>
     </div>
+     <!-- Scripts -->
+     <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('js/browser.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('js/breakpoints.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('js/util.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
