@@ -30,7 +30,7 @@
                     @auth
                     <li><a href="#">Events</a></li>
                     
-                    <li><a href="{{ asset('volProfile.blade.php') }}">Profile</a></li>
+                    <li><a href="{{ asset('ProfilePage.blade.php') }}">Profile</a></li>
                     @endauth
                     <li><a href="#">contact us</a></li>
                 </ul>
