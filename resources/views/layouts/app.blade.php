@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('header')
 </head>
 <body>
     <div id="app">
@@ -25,10 +26,10 @@
             <a class="logo" href="/"><img src="{{ asset('logo.png')}}" alt="logo" style="width: auto; height: 60px;"></a>
             <nav>
                 <ul class="nav__links">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     @auth
                     <li><a href="#">Events</a></li>
-                    <li><a href="#">My Profile</a></li>
+                <li><a href="/Profile/{{Auth::User()->id}}">My Profile</a></li>
                     @endauth
                     <li><a href="#">contact us</a></li>
                 </ul>

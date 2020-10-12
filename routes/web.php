@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/Profile/{user}',[App\Http\Controllers\ProfilesController::class,'show'])->middleware('auth');
+Route::get('/Profile/{user}/Edit',[App\Http\Controllers\ProfilesController::class,'edit'])->middleware('auth');
+Route::put('/Profile/{id}',[App\Http\Controllers\ProfilesController::class,'update'])->middleware('auth');

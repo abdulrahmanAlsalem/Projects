@@ -16,9 +16,14 @@
 
                             <div>
                                 <select class="select" name="role" id="role"> 
-                                    <option value="Orgnaization">Orgnaization</option>
-                                    <option value="Volunteer">Volunteer</option>
+                                    <option value="Orgnaization" @if( old('role') == 'Orgnaization') selected @endif>Orgnaization</option>
+                                    <option value="Volunteer" @if(old('role') == 'Volunteer') selected @endif>Volunteer</option>
                                 </select>
+                                @error('role')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                         <div>
@@ -48,19 +53,6 @@
                             </div>
                         </div>
 <!-- //  -->
-                        <div>
-                            {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Orgnaization Contact Information') }}</label> --}}
-
-                            <div>
-                                <input id="orgnaizationNumber" type="text" placeholder="{{ __('Contact number') }}" class="input_box @error('orgnaizationNumber') is-invalid @enderror" name="orgnaizationNumber" value="{{ old('orgnaizationNumber') }}" required autocomplete="orgnaizationNumber">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 <!-- //  -->
                         <div>
                             {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
