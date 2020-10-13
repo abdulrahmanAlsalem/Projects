@@ -20,13 +20,6 @@
 
 	
 		<!-- Banner -->
-		
-			<section id="banner">
-				<div class="inner">
-					<h1 class="vtitle">As an organization you can Add and share new volunteer event</h1>
-					
-				</div>
-			</section>
 
 		<!-- Highlights -->
     <section class="wrapper">
@@ -37,30 +30,56 @@
                         <div class="card-header bg-white border-0">
                           <div class="row align-items-center">
                             <div class="col-8">
-                              <h3 class="mb-0">My account</h3>
+                            <h3 class="mb-0">{{$user->name}}</h3>
                             </div>
                             
                           </div>
                         </div>
                         <div class="card-body">
-                          <form>
+                          <form method="POST" enctype="multipart/form-data" action="/Profile/{{$user->id}}">
+                            @csrf
+                            @method('put')
                             <h3 class="heading-small text-muted mb-4"> information</h3>
-                            <div class="pl-lg-4">
-                              
+                            {{-- <div class="pl-lg-4">
+                              <div class="col-1">
+                                <img src="/{{$user->image}}">
+                                </div>
+                              <input type="file" name="image" style="margin-top: 10px">
+                              @error('image')
+                                  <strong>{{$message}}</strong>
+                              @enderror --}}
+
+                             
+
                               <div class="row">
                                 <div class="col-lg-6">
                                   <div class="form-group focused">
                                     <label class="form-control-label" for="input-first-name">Name</label>
-                                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Name" >
+                                  <input name="name" type="text" id="input-first-name" class="form-control form-control-alternative" value="{{$user->name}}">
                                   </div>
                                 </div>
+                                  {{-- picture --}}
+                                  <div class="pl-lg-4">
+                                   <div class="col-1">
+                                  <label class="form-control-label" for="input-profile-picture">Profile picture</label>
+                                  <img src="/{{$user->image}}" alt="user-picture" class="userpicture">
+                                 
+                                  </div>
+                                <input type="file" name="image">
+                                @error('image')
+                                    <strong>{{$message}}</strong>
+                                @enderror
+                              </div>
                                
                               </div>
                               <div class="row">
                                 <div class="col-lg-6">
                                   <div class="form-group focused">
-                                    <label class="form-control-label" for="input-first-name">Contact number</label>
-                                    <input type="text" id="input-phone" class="form-control form-control-alternative" placeholder="Contact number" >
+                                    <label class="form-control-label" for="input-first-name">{{($user->role == 'Orgnaization') ? 'Telephone Number' : 'Phone Number'}}</label>
+                                  <input name="contact_number"type="text" id="input-phone" class="form-control form-control-alternative" value="{{($user->role == 'Orgnaization') ? $user->telephone_number : $user->phone_number}}" >
+                                  @error('contact_number')
+                                  <strong>{{$message}}</strong>
+                                  @enderror
                                   </div>
                                 </div>
                             </div>
@@ -91,19 +110,19 @@
                                     <input type="text" id="input-phone" class="form-control form-control-alternative" placeholder="Phone number" >
                                   </div>
                                 </div> -->
-                              </div>
+                              {{-- </div> --}}
                             </div>
                             <hr class="my-4">
 
                             <!-- Description -->
-                            <h3 class="heading-small text-muted mb-4"> About :</h3>
+                            <h3 class="heading-small text-muted mb-4">About:</h3>
                             <div class="pl-lg-4">
                               <div class="form-group focused">
-                                <label>Biography</label>
-                                <textarea rows="4" class="form-control form-control-alternative" placeholder="A brief description about you"></textarea>
+                                <label>Bio</label>
+                              <textarea name="description" rows="4" class="form-control form-control-alternative" placeholder="Tell us your story">{{$user->description}}</textarea>
                               </div>
                             </div>
-                              <center><a href="#!" class="btn btn-sm btn-primary"> Save</a> <center>
+                              <center><input class="btn btn-sm btn-primary" type="submit" value="Save"> <center>
 
                           </form>
                         </div>

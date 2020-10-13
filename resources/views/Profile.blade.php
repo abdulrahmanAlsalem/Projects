@@ -1,9 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
 
-
-	<head>
+<head>
     <title>Profile</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -26,10 +24,12 @@
                         <div class="card-header bg-white border-0">
                           <div class="row align-items-center">
                             <div class="col-8">
-                              <h3 class="mb-0">My account</h3>
+                            <h2 class="mb-0">{{$user->name}}</h2>
                             </div>
                             <div class="col-4 text-right">
-                              <a href="{{ asset('EditProfile.blade.php') }}" class="btn btn-sm btn-primary">Edit</a>
+                                @if (Auth::User()->id == $user->id)
+                            <a href="/Profile/{{Auth::User()->id}}/Edit" class="btn btn-sm btn-primary">Edit</a>
+                                @endif
                             </div>
                           </div>
                         </div>
@@ -37,18 +37,26 @@
                           <form>
                             <h3 class="heading-small text-muted mb-4"> information</h3>
                             <div class="pl-lg-4">
-                              
+                                   {{-- <div class="col-1" style="float: right;"> --}}
+                                    
+                                    </div>
                               <div class="row">
                                 <div class="col-lg-6">
                                   <div class="form-group focused">
-                                    <label class="form-control-label" for="input-first-name">Name :</label>
+                                  <label class="form-control-label" for="input-first-name">Name: {{$user->name}}</label>
+                                  </div>
+                                </div>
+                                 {{-- picture --}}
+                                <div class="col-lg-10">
+                                  <div class="form-group focused">
+                                  <label class="form-control-label" for="input-first-name" >Profile Pic: <img src="/{{$user->image}}"> </label>
                                   </div>
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="col-lg-6">
                                   <div class="form-group focused">
-                                    <label class="form-control-label" for="input-first-name">Contact number : </label>
+                                  <label class="form-control-label" for="input-first-name">{{($user->role == 'Orgnaization') ? 'Telephone Number' : 'Phone Number'}}: {{($user->role == 'Orgnaization') ? $user->telephone_number : $user->phone_number}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +67,7 @@
                               <div class="row">
                                <div class="col-lg-4">
                                   <div class="form-group focused">
-                                    <label class="form-control-label" for="input-Biography">Biography :</label>
+                                    <label class="form-control-label" for="input-Biography">Bio: {{$user->description}}</label>
                                    
                                   </div>
                                 </div>
@@ -114,5 +122,14 @@
 
 	</body>
 
-
-@endsection 
+{{-- @if (Auth::User()->id == $user->id)
+<form method="POST" enctype="multipart/form-data" action="/Profile/{{$user->id}}">
+    @csrf
+    @method('put')
+<input type="file" name="image">
+<input type="submit" value="Upload">
+</form>
+<button><a> Edit</a></button>
+@endif --}}
+    
+@endsection

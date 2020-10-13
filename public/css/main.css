@@ -31,7 +31,8 @@ body {
   box-sizing: border-box;
       margin: 0;
       padding: 0;
-  background: #ffffff; }
+  /* background: #ffffff; */
+ }
   body.is-preload *, body.is-preload *:before, body.is-preload *:after {
     -moz-animation: none !important;
     -webkit-animation: none !important;
@@ -65,7 +66,7 @@ footer, hgroup, menu, nav, section {
   display: block; }
 
 body {
-  line-height: 1; }
+  line-height: 1 }
 
 ol, ul {
   list-style: none; }
@@ -111,8 +112,8 @@ html {
       font-size: 11pt; } }
 
 body {
-  background-color: #ffffff;
-  color: #444444; }
+    background-color: #ffffff;
+    color: #444444; }
 
 body, input, select, textarea {
   font-family: "Raleway", Arial, Helvetica, sans-serif;
@@ -2404,8 +2405,7 @@ ul.icons {
       padding: 2rem 0 0.1rem 0 ; } }
 
 /* Header */
-body {
-  padding-top: 3.25rem; }
+
   body:before {
     content: ' ';
     background-image: url(../../images/bg.jpg);

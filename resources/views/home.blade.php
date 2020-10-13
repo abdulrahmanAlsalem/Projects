@@ -13,7 +13,8 @@
 		<link href="{{ asset('css/forms.css') }}" rel="stylesheet">
 	</head>
 	<body class="is-preload">
-
+        
+            <!-- Banner animation --> 
         <section id="banner">
             <div class="inner">
                 <h2 class="vtitle"> Welcome {{ Auth::user()->name }} organization </h2>
@@ -25,7 +26,7 @@
     <!-- Highlights -->
         <section class="wrapper">
             <div class="inner">
-                <center><p class="h2-title">Adding a new event </p></center>
+                <center><p class="h2-title">Create a new event </p></center>
                 <!-- <div class="highlights"> -->
                     <!-- 1 -->
                     <div class="addevent-form" >
@@ -34,16 +35,16 @@
                           <label class="event_name" for="eventname">Enter the event name :
                           <input type="text" id="eventname" name="eventname" placeholder=""></label>
                         
-                          <label class="event_place" for="eventplace">Where will the event be?
+                          <label class="event_place" for="eventplace">Where will the event be held?
                           <input type="text" id="eventplace" name="eventplace" placeholder=""></label>
                             <p class="event_date">
-                          <label class="event_date" for="startdate">event Start date
+                          <label class="event_date" for="startdate">Event Start date
                           <input type="date">
-                          <label class="event_date" for="enddate">event End date
+                          <label class="event_date" for="enddate">Event End date
                           <input type="date"></label>
                             </p>
 
-                            <label class="Volunteernumber" for="Volunteernumber"> Enter the Volunteers number
+                            <label class="Volunteernumber" for="Volunteernumber">How many Volunteers do you need?
                             <input type="number" for="Volunteernumber"></label>
 
                         </p>
@@ -60,9 +61,9 @@
     <!-- CTA -->
         <section id="cta" class="wrapper">
             <div class="inner">
-                <h2>You Can easly share the new event</h2>
+                <h2>You Can easly share new events</h2>
                 <p class="footer-org">
-                <pre>1.Click Add event button                  2.Fill the event form                  3.Share it to Volunteers</pre>
+                <pre>1.Click create event button                  2.Fill the form                  3.Share it with Volunteers</pre>
                
                 </p>
             </div>
@@ -84,15 +85,15 @@
 
     
 </head>
-<body>
+<body class="is-preload" >
     
-		<!-- Banner -->
+		<!-- Banner animation -->
 		
 			<section id="banner">
 				<div class="inner">
                 <h2 class="vtitle"> Welcome {{ Auth::user()->name }} </h2>
-					<h1 class="vtitle">In Volunteering Platform</h1>
-					<p>As a volunteer you can easily join any available event
+					<h1 class="vtitle">With Volunteering Platform</h1>
+					<p> you can easily join events around you
 					</p>
 				</div>
 			</section>
@@ -100,7 +101,7 @@
 		<!-- Highlights -->
 			<section class="wrapper">
 				<div class="inner">
-					<center><p class="h-title">Volunteer avaiable Events :</p></center>
+					<center><p class="h-title">avaiable Volunteering Events :</p></center>
 					
 					<div class="highlights">
 					
@@ -112,7 +113,7 @@
 
                                     <div class="Event_container">
                                     <p class="Event_title"> Event name</p>
-                                    <p class="Event_dis">Brief discription</p>
+                                    <p class="Event_dis">Brief description</p>
                                     <div class="Event_details">
                                         <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">20</p>
                                         <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">. 3 Sep</p> 
@@ -129,7 +130,7 @@
 
                                     <div class="Event_container">
                                     <p class="Event_title"> Event name</p>
-                                    <p class="Event_dis">Brief discription</p>
+                                    <p class="Event_dis">Brief description</p>
                                     <div class="Event_details">
                                         <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">20</p>
                                         <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">. 3 Sep</p> 
@@ -146,7 +147,7 @@
 
                                     <div class="Event_container">
                                     <p class="Event_title"> Event name</p>
-                                    <p class="Event_dis">Brief discription</p>
+                                    <p class="Event_dis">Brief description</p>
                                     <div class="Event_details">
                                         <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">20</p>
                                         <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">. 3 Sep</p> 
