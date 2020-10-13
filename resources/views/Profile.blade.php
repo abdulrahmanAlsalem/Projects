@@ -49,7 +49,7 @@
                                  {{-- picture --}}
                                 <div class="col-lg-10">
                                   <div class="form-group focused">
-                                  <label class="form-control-label" for="input-first-name" >Profile Pic: <img src="/{{$user->image}}"> </label>
+                                  <label class="form-control-label" for="input-first-name" >Profile Pic: <img src="{{asset($user->image)}}"> </label>
                                   </div>
                                 </div>
                               </div>
