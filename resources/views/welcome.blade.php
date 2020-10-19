@@ -20,7 +20,7 @@
 			<section id="banner">
 				<div class="inner">
 					<h1 class="vtitle">Volunteering Platform</h1>
-					<p>Enables organizations to share events that needs volunteers, and the volunteer can easily join any avaiable event
+					<p>Share and Find Volunteering events around you
 					</p>
 				</div>
 			</section>

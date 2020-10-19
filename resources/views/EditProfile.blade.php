@@ -24,7 +24,6 @@
 		<!-- Highlights -->
     <section class="wrapper">
       <div class="inner">
-        <center><p class="h2-title">Edit Profile Page</p></center>
         <div class="col-xl-10 order-xl-1">
                       <div class="card bg-secondary shadow">
                         <div class="card-header bg-white border-0">
@@ -39,7 +38,6 @@
                           <form method="POST" enctype="multipart/form-data" action="/Profile/{{$user->id}}">
                             @csrf
                             @method('put')
-                            <h3 class="heading-small text-muted mb-4"> information</h3>
                             {{-- <div class="pl-lg-4">
                               <div class="col-1">
                                 <img src="/{{$user->image}}">
@@ -51,6 +49,21 @@
 
                              
 
+                              <div class="row" style="position:absolute; left:75%; float: right;">
+                                <div class="col-lg-8">
+                                 <div class="form-group focused">
+                                 <img style="  vertical-align: middle;
+                                   width: 200px;
+                                   height: 200px;
+                                   border-radius: 10%;
+                                   object-fit: contain;" src="{{asset($user->image)}}">
+                                 </div>
+                                 <input type="file" name="image">
+                                 @error('image')
+                                     <strong style="color: crimson">{{$message}}</strong>
+                                 @enderror
+                               </div>
+                               </div>
                               <div class="row">
                                 <div class="col-lg-6">
                                   <div class="form-group focused">
@@ -59,18 +72,6 @@
                                   </div>
                                 </div>
                                   {{-- picture --}}
-                                  <div class="pl-lg-4">
-                                   <div class="col-1">
-                                  <label class="form-control-label" for="input-profile-picture">Profile picture</label>
-                                  <img src="/{{$user->image}}" alt="user-picture" class="userpicture">
-                                 
-                                  </div>
-                                <input type="file" name="image">
-                                @error('image')
-                                    <strong>{{$message}}</strong>
-                                @enderror
-                              </div>
-                               
                               </div>
                               <div class="row">
                                 <div class="col-lg-6">
@@ -78,7 +79,7 @@
                                     <label class="form-control-label" for="input-first-name">{{($user->role == 'Orgnaization') ? 'Telephone Number' : 'Phone Number'}}</label>
                                   <input name="contact_number"type="text" id="input-phone" class="form-control form-control-alternative" value="{{($user->role == 'Orgnaization') ? $user->telephone_number : $user->phone_number}}" >
                                   @error('contact_number')
-                                  <strong>{{$message}}</strong>
+                                  <strong style="color: crimson">{{$message}}</strong>
                                   @enderror
                                   </div>
                                 </div>
@@ -112,10 +113,10 @@
                                 </div> -->
                               {{-- </div> --}}
                             </div>
-                            <hr class="my-4">
+                            {{-- <hr class="my-4"> --}}
 
                             <!-- Description -->
-                            <h3 class="heading-small text-muted mb-4">About:</h3>
+                            {{-- <h3 class="heading-small text-muted mb-4">About:</h3> --}}
                             <div class="pl-lg-4">
                               <div class="form-group focused">
                                 <label>Bio</label>
@@ -135,7 +136,7 @@
       </div>
     </section>
 		<!-- CTA -->
-			<section id="cta" class="wrapper">
+			{{-- <section id="cta" class="wrapper">
 				<div class="inner">
                     <h2>You Can easly share the new event</h2>
                     <p class="footer-org">
@@ -143,7 +144,7 @@
                    
                     </p>
 				</div>
-			</section>
+			</section> --}}
 
 		
 		<!-- Footer -->

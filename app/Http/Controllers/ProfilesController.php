@@ -21,7 +21,7 @@ class ProfilesController extends Controller
     {
         request()->validate([
             'image'=>'mimes:jpeg,jpg,png',
-            'contact_number'=>'min:7'
+            'contact_number'=>'min:7|numeric|nullable'
         ]);
         $user = User::find($id);
         if($request->file('image')!= null){

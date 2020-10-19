@@ -17,8 +17,8 @@
             <!-- Banner animation --> 
         <section id="banner">
             <div class="inner">
-                <h2 class="vtitle"> Welcome {{ Auth::user()->name }} organization </h2>
-                <h1 class="vtitle">As an organization you can Add and share new volunteer event</h1>
+                <h2 class="vtitle"> Welcome {{ Auth::user()->name }}</h2>
+                <h1 class="vtitle">Share volunteering opportunities with people around you </h1>
                 
             </div>
         </section>
@@ -93,7 +93,7 @@
 				<div class="inner">
                 <h2 class="vtitle"> Welcome {{ Auth::user()->name }} </h2>
 					<h1 class="vtitle">With Volunteering Platform</h1>
-					<p> you can easily join events around you
+					<p>Find volunteering opportunities around you
 					</p>
 				</div>
 			</section>
@@ -101,7 +101,7 @@
 		<!-- Highlights -->
 			<section class="wrapper">
 				<div class="inner">
-					<center><p class="h-title">avaiable Volunteering Events :</p></center>
+					<center><p class="h-title">available Volunteering Events :</p></center>
 					
 					<div class="highlights">
 					

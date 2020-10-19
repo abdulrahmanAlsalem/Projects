@@ -31,7 +31,7 @@
                     <li><a href="#">Events</a></li>
                 <li><a href="/Profile/{{Auth::User()->id}}">My Profile</a></li>
                     @endauth
-                    <li><a href="#">contact us</a></li>
+                    <li><a href="#">Contact us</a></li>
                 </ul>
     
             </nav>

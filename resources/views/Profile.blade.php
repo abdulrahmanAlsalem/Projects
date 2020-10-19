@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/forms.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
@@ -18,13 +17,12 @@
 
     <section class="wrapper">
       <div class="inner">
-        <center><p class="h2-title"> Profile Page</p></center>
         <div class="col-xl-10 order-xl-1">
                       <div class="card bg-secondary shadow">
                         <div class="card-header bg-white border-0">
                           <div class="row align-items-center">
                             <div class="col-8">
-                            <h2 class="mb-0">{{$user->name}}</h2>
+                            <h3 class="mb-0">{{$user->name}}</h2>
                             </div>
                             <div class="col-4 text-right">
                                 @if (Auth::User()->id == $user->id)
@@ -35,54 +33,56 @@
                         </div>
                         <div class="card-body">
                           <form>
-                            <h3 class="heading-small text-muted mb-4"> information</h3>
+                              <div>
+                            {{-- <h3 class="heading-small text-muted mb-4">Information</h3> --}}
                             <div class="pl-lg-4">
                                    {{-- <div class="col-1" style="float: right;"> --}}
                                     
                                     </div>
+                                    <div class="row" style="float: right;">
+                                     <div class="col-lg-8">
+                                      <div class="form-group focused">
+                                      <img style="  vertical-align: middle;
+                                        width: 200px;
+                                        height: 200px;
+                                        border-radius: 10%;
+                                        object-fit: contain;" src="{{asset($user->image)}}">
+                                      </div>
+                                    </div>
+                                    </div>
                               <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-8">
                                   <div class="form-group focused">
-                                  <label class="form-control-label" for="input-first-name">Name: {{$user->name}}</label>
+                                  {{--<label class="form-control-label" for="input-first-name">--}}<div style="font-weight: bold"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-badge-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+                                </svg> : {{$user->name}}</div>
                                   </div>
                                 </div>
+                            </div>
                                  {{-- picture --}}
-                                <div class="col-lg-10">
-                                  <div class="form-group focused">
-                                  <label class="form-control-label" for="input-first-name" >Profile Pic: <img src="{{asset($user->image)}}"> </label>
-                                  </div>
-                                </div>
-                              </div>
                               <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-8">
                                   <div class="form-group focused">
-                                  <label class="form-control-label" for="input-first-name">{{($user->role == 'Orgnaization') ? 'Telephone Number' : 'Phone Number'}}: {{($user->role == 'Orgnaization') ? $user->telephone_number : $user->phone_number}}</label>
+                                    {{-- <label class="form-control-label" for="input-first-name">{{($user->role == 'Orgnaization') ? 'Telephone Number' : 'Phone Number'}} --}}
+                                        <div style="font-weight: bold"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
+                                          </svg> : {{($user->role == 'Orgnaization') ? $user->telephone_number : $user->phone_number}}</div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <hr class="my-4">
-                            <!-- Address -->
                             <h3 class="heading-small text-muted mb-4">About: </h3>
                               <div class="row">
-                               <div class="col-lg-4">
+                               <div class="col-lg-8">
                                   <div class="form-group focused">
-                                    <label class="form-control-label" for="input-Biography">Bio: {{$user->description}}</label>
+                                    {{$user->description}}
                                    
                                   </div>
                                 </div>
-                                
-                                <!-- <div class="pl-lg-4"> -->
-
-                                  <!-- </div>
-                                </div> -->
-                                <!-- <div class="col-lg-4">
-                                  <div class="form-group focused">
-                                    <label class="form-control-label" for="input-country">Phone number</label>
-                                    <input type="text" id="input-phone" class="form-control form-control-alternative" placeholder="Phone number" >
-                                  </div>
-                                </div> -->
                               </div>
+                        </div>
+                    </div>
+                    {{-- <hr class="my-4"> --}}
+                    <!-- Address -->
                             </div>
                            
                           </form>
@@ -99,7 +99,7 @@
 
     <!-- CTA -->
     	<!-- Footer -->
-			<section id="cta" class="wrapper">
+			{{-- <section id="cta" class="wrapper">
 				<div class="inner">
                     <h2>You Can easly join to volunteering event</h2>
                     <p class="footer-org">
@@ -107,7 +107,7 @@
                    
                     </p>
 				</div>
-			</section>
+			</section> --}}
 
 		
 	
