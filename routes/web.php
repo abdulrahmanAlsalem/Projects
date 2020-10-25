@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/Profile/{user}',[App\Http\Controllers\ProfilesController::class,'show'])->middleware('auth');
 Route::get('/Profile/{user}/Edit',[App\Http\Controllers\ProfilesController::class,'edit'])->middleware('auth');
 Route::put('/Profile/{id}',[App\Http\Controllers\ProfilesController::class,'update'])->middleware('auth');
+Route::post('/Event',[App\Http\Controllers\EventController::class,'store'])->middleware('auth');
+Route::post('/Event/{event}',[\App\Http\Controllers\EventController::class,'join'])->middleware('auth');

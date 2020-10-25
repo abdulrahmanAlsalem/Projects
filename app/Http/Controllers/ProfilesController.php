@@ -16,7 +16,7 @@ class ProfilesController extends Controller
  {
     //  $user = User::find($id);
      return view('EditProfile',['user'=>$user]);
- }   
+ }
  public function update($id,Request $request)
     {
         request()->validate([
