@@ -28,30 +28,54 @@
                   <form method="post" action="/Event/{{$event->id}}">
                       @csrf
                       <p class="event_info">
+                          
                   <span>
-
-                      <label class="event_name2" >Event Name: {{$event->title}}</label>
-                      <label class="org_name2" >Organization Name: <a href="/Profile/{{$event->organizer->id}}">{{$event->organizer->name}}</a> </label>
-
-
+                      {{-- <label class="event_name2" >Event Name: {{$event->title}}</label> --}} 
+                      <div class="theEvent">
+                      <label class="event_field" >Event Name:
+                      <p class="event_name1">{{$event->title}}</p> 
+                  </label> 
+                      </div>
+                      {{-- <label class="org_name2" >Organization Name: <a href="/Profile/{{$event->organizer->id}}">{{$event->organizer->name}}</a> </label> --}}
+                      <div class="theOrg">
+                      <label class="org_name2" >Organization Name: 
+                          <p class="org_name1"><a href="/Profile/{{$event->organizer->id}}">{{$event->organizer->name}}</a></p> 
+                       </label>
+                      </div>
+                          <hr>
                     </span>
 
 
                     <label class="event_dis" for="eventdis">About the event:
                         <label class="des_field" for=""  >
+                            {{-- {{$event->description}} --}}
                             {{$event->description}}
                         </label>
-
-
+                      <hr>
                     <span>
 
-                          <label class="event_date1" for="startdate">Event Start date: {{$event->start_date->format('d M ') }}</label>
-                          <label class="event_date2" for="enddate">Event End date: {{$event->end_date->format('d M')}}</label>
+                          {{-- <label class="event_date1" for="startdate">Event Start date: {{$event->start_date->format('d M ') }}</label> --}}
+                          <div class="date1">
+                          <label class="event_date1" for="startdate">Event Start date:
+                              <p class="st_date"> {{$event->start_date->format('d M ') }}</p>
+                          </label>
+                           </div>
+
+                          {{-- <label class="event_date2" for="enddate">Event End date: {{$event->end_date->format('d M')}}</label> --}}
+                          <div class="date2">
+                          <label class="event_date2" for="enddate">Event End date: 
+                              <p class="ed_date">{{$event->end_date->format('d M')}}</p>
+                          </label>
+                      </div>
 
                     </span>
+                    
 
-
-                        <label class="Volunteernumber" for="Volunteernumber">Number of required volunteers: {{$event->required_volunteers}}</label>
+                        {{-- <label class="Volunteernumber" for="Volunteernumber">Number of required volunteers: {{$event->required_volunteers}}</label> --}}
+                        <div class="num_req">
+                        <label class="Volunteernumber" for="Volunteernumber">Number of required volunteers: </label>
+                        <p class="volunteer_n">{{$event->required_volunteers}}</p>
+                      </div>
 
 
                   </p>
@@ -70,13 +94,13 @@
             <h2>You Can easly share new events</h2>
             <p class="footer-org">
             <pre>1.Click create event button                  2.Fill the form                  3.Share it with Volunteers</pre>
-
+           
             </p>
         </div>
     </section>
-
-
-
+		
+	
+			
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

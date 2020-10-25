@@ -138,24 +138,44 @@
   form input[type=submit]:hover {
     background-color: #ffffff;
   }
- .event_name{
+ .event_field{
      font-size: 24px;
      color: rgb(37, 126, 120);
+     /* float: left; */
+     display: inline;
 
  }
- .event_name2{
+ .event_name1{
+   color: black;
+   font-size: medium;
+   display: inline;
+ }
+ .event_filed{
   font-size: 24px;
   color: rgb(37, 126, 120);
   float: left;
+ }
+ .theEvent{
+   display: inline-block;
+ }
+ .theOrg{
+   display: inline-block;
+   float: right;
  }
  .org_name2{
   font-size: 24px;
   color: rgb(37, 126, 120);
   float: right;
  }
+ .org_name1{
+  Color: black;
+  font-size: medium;
+  display: inline;
+ }
  .event_dis{
     font-size: 24px;
     color: rgb(37, 126, 120);
+    display: block;
 
  }
  .event_date{
@@ -213,9 +233,37 @@
     margin: 8px 0;
     background-color: #f2f2f2;
     display: inline-block;
-    border: 2px solid #27908A;
-    border-radius: 4px;
+    color: black;
+    /* border: 1px solid #27908A; */
+    border-radius: 2px;
     box-sizing: border-box;
     font-size: large;
 
+  }
+
+  .input_num{
+    color: #27908A;
+  }
+  .date1{
+    display: inline-block;
+    
+  }
+  .date2{
+    display: inline-block;
+    float: right;
+  }
+  .st_date{
+    Color: black;
+    font-size: medium;
+    display: inline;
+  }
+  .ed_date{
+    Color: black;
+    font-size: medium;
+    display: inline;
+  }
+  .volunteer_n{
+    Color: black;
+    font-size: medium;
+    display: inline;
   }

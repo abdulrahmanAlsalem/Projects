@@ -46,7 +46,7 @@
                         @enderror
 
                         <label class="Volunteernumber" for="Volunteernumber">How many Volunteers do you need?
-                            <input type="number" name="Volunteernumber"></label>
+                            <input class="input_num" type="number" name="Volunteernumber"></label>
                         @error('Volunteernumber')
                         <strong style="color: crimson">{{$message}}</strong><br>
                         @enderror

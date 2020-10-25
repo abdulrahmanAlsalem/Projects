@@ -3,38 +3,43 @@
 @section('content')
 
 @if (Auth::user()->role == 'Orgnaization')
-	<head>
-		<title>Volunteering Platform</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link href="{{ asset('css/main.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/forms.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/cards.css') }}" rel="stylesheet">
 
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Volunteering Platform</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/forms.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/cards.css') }}" rel="stylesheet">
+
+</head>
+
+<body class="is-preload">
 
 
-            <!-- Banner animation -->
+    <!-- Banner animation -->
 
-        <section id="banner">
-            <div class="inner">
-                <h2 class="vtitle"> Welcome {{ Auth::user()->name }}</h2>
-                <h1 class="vtitle">Share volunteering opportunities with people around you </h1>
+    <section id="banner">
+        <div class="inner">
+            <h2 class="vtitle"> Welcome {{ Auth::user()->name }}</h2>
+            <h1 class="vtitle">Share volunteering opportunities with people around you </h1>
 
-            </div>
-        </section>
+        </div>
+    </section>
 
     <!-- Highlights -->
 
     <section class="wrapper">
         <div class="inner">
-            <center><p class="h-title">Volunteering goals</p></center>
+            <center>
+                <p class="h-title">Volunteering goals</p>
+            </center>
             <header class="special">
-                <h3>Volunteering is a voluntary act of an individual or group freely giving time and labour for community service.</h3>
-                     </header>
+                <h3>Volunteering is a voluntary act of an individual or group freely giving time and labour for
+                    community service.</h3>
+            </header>
             <div class="highlights">
                 <!-- 1 -->
                 <section>
@@ -63,7 +68,8 @@
                             <a href="#" class="icon fa-users"><span class="label">Icon</span></a>
                             <h3>Improving Social skills</h3>
                         </header>
-                        <p>Volunteering gives you an opportunity to change people's lives, including your own. It gives you the satisfaction of playing a role in someone else's life.</p>
+                        <p>Volunteering gives you an opportunity to change people's lives, including your own. It gives
+                            you the satisfaction of playing a role in someone else's life.</p>
                     </div>
                 </section>
 
@@ -147,86 +153,112 @@
         <div class="inner">
             <h2>You Can easly share new events</h2>
             <p class="footer-org">
-            <pre>1.Click create event button                  2.Fill the form                  3.Share it with Volunteers</pre>
+                <pre>1.Click create event button                  2.Fill the form                  3.Share it with Volunteers</pre>
 
             </p>
         </div>
     </section>
 
- @else
+    @else
 
-<head>
-    <title>Volunteering Platform</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    {{-- Voolunteer home page  --}}
 
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/cards.css') }}" rel="stylesheet">
+    <head>
+        <title>Volunteering Platform</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/cards.css') }}" rel="stylesheet">
+        
 
 
-</head>
-<body class="is-preload" >
+    </head>
 
-		<!-- Banner animation -->
+    <body class="is-preload">
 
-			<section id="banner">
-				<div class="inner">
+        <!-- Banner animation -->
+
+        <section id="banner">
+            <div class="inner">
                 <h2 class="vtitle"> Welcome {{ Auth::user()->name }} </h2>
-					<h1 class="vtitle">With Volunteering Platform</h1>
-					<h1 class="vtitle">Find volunteering opportunities around you
-					</h1>
-				</div>
-			</section>
+                <h1 class="vtitle">With Volunteering Platform</h1>
+                <h1 class="vtitle">Find volunteering opportunities around you
+                </h1>
+            </div>
+        </section>
 
         <!-- Highlights -->
 
-			<section class="wrapper">
-				<div class="inner">
-					<center><p class="h-title">Available Volunteering Events :</p></center>
+        {{-- Available events code :  --}}
+        <section class="wrapper">
+            <div class="inner">
+                <center>
+                    <p class="h-title">Available Volunteering Events :</p>
+                </center>
 
-					<div class="highlights">
+                <div class="highlights">
 
-						<!-- Events Card (each section has one event card .. ) -->
-                        @foreach($events as $event)
-						<section>
-							<div class="content">
-                                <div class="Events_card">
-                                    <header> <img src="/images/Group9.png" alt="" style="width:100%"></header>
+                    <!-- Events Card (each section has one event card .. ) -->
+                    @foreach($events as $event)
 
-                                    <div class="Event_container">
-                                    <p class="Event_title"> {{$event->title}}</p>
-                                    <p class="Event_dis">{{Illuminate\Support\Str::words($event->description,20)}}</p>
+                    <section>
+                        <div class="content">
+                            <div class="Events_card">
+                                <header> <img src="/images/Group9.png" alt="" style="width:100%"></header>
+
+                                <div class="Event_container">
+                                    <p class="Event_title1"> {{$event->title}}</p>
+
+                                    <p class="Event_dis1">{{Illuminate\Support\Str::words($event->description,20)}}</p>
+
+                                    <hr>
+
                                     <div class="Event_details">
-                                        <p id="volunteer_numbers" class="icon fa-users" style="font-size: large"> {{$event->required_volunteers}}</p>
-                                        <p id="Event_dates" class="icon  fa-calendar " style="font-size: large"> {{$event->start_date->format('d M ') }} @if($event->start_date->format('d M') != $event->end_date->format('d M')) - {{$event->end_date->format('d M ')}} @endif</p>
-                                    </div>
+                                        <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">
+                                            {{$event->required_volunteers}}</p>
+                                        <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">
+                                            {{$event->start_date->format('d M ') }} @if($event->start_date->format('d
+                                            M') != $event->end_date->format('d M')) -
+                                            {{$event->end_date->format('d M ')}} @endif</p>
+
+                                        {{-- <p class="Event_title1"> Event Title </p> --}}
+                                        {{-- <p class="Event_dis1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s </p> --}}
+                                        {{-- <p id="volunteer_numbers" class="icon fa-users" style="font-size: large"> 123 </p> --}}
+                                        {{-- <p id="Event_dates" class="icon  fa-calendar " style="font-size: large"> 10/10/2020 </p> --}}
+                                        {{-- <a href="/Event/"><button class="joiniing" >Join this event</button></a> --}}
+
                                     </div>
                                     @unless(Auth::user()->inEvents()->find($event->id))
-                                        <a href="/Event/{{$event->id}}"><button class="joiniing" >Join this event</button></a>
+                                    <a href="/Event/{{$event->id}}"><button class="joiniing">Join this
+                                            event</button></a>
+
+
                                     @endunless
                                 </div>
-							</div>
-                        </section>
-                        @endforeach
+
+                            </div>
+                        </div>
+                    </section>
 
 
+                    @endforeach
+                </div>
+            </div>
+        </section>
 
+        {{-- Eventpage --}}
+       
 
+        <!-- CTA -->
+        <section id="cta" class="wrapper">
+            <div class="inner">
 
-					</div>
-				</div>
-			</section>
+            </div>
+        </section>
 
-
-		<!-- CTA -->
-			<section id="cta" class="wrapper">
-				<div class="inner">
-
-				</div>
-			</section>
-
-        </body>
-@endif
-@endsection
+    </body>
+    @endif
+    @endsection
