@@ -175,8 +175,8 @@
 				<div class="inner">
                 <h2 class="vtitle"> Welcome {{ Auth::user()->name }} </h2>
 					<h1 class="vtitle">With Volunteering Platform</h1>
-					<p>Find volunteering opportunities around you
-					</p>
+					<h1 class="vtitle">Find volunteering opportunities around you
+					</h1>
 				</div>
 			</section>
 
@@ -184,7 +184,7 @@
 
 			<section class="wrapper">
 				<div class="inner">
-					<center><p class="h-title">available Volunteering Events :</p></center>
+					<center><p class="h-title">Available Volunteering Events :</p></center>
 
 					<div class="highlights">
 
@@ -200,15 +200,11 @@
                                     <p class="Event_dis">{{Illuminate\Support\Str::words($event->description,20)}}</p>
                                     <div class="Event_details">
                                         <p id="volunteer_numbers" class="icon fa-users" style="font-size: large"> {{$event->required_volunteers}}</p>
-                                        <p id="Event_dates" class="icon  fa-calendar " style="font-size: large"> {{$event->start_date->format('d M h:00')}} - {{$event->end_date->format('d M h:00')}}</p>
+                                        <p id="Event_dates" class="icon  fa-calendar " style="font-size: large"> {{$event->start_date->format('d M ') }} @if($event->start_date->format('d M') != $event->end_date->format('d M')) - {{$event->end_date->format('d M ')}} @endif</p>
                                     </div>
                                     </div>
                                     @unless(Auth::user()->inEvents()->find($event->id))
-                                        <form method="post" action="/Event/{{$event->id}}">
-                                            @csrf
-                                            <button href="{{ asset('/eventpage.blade.php') }}" class="joiniing" >Join this event</button>
-
-                                        </form>
+                                        <a href="/Event/{{$event->id}}"><button class="joiniing" >Join this event</button></a>
                                     @endunless
                                 </div>
 							</div>

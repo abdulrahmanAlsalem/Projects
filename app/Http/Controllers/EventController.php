@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
+    public function show(Event $event = null)
+    {
+//        return view('eventpage',['event'=>$event]);
+        return view('eventpage');
+    }
+    public function create(){
+        return view('addevent');
+    }
     public function store(Request $request)
     {
         $request->validate(['event_name'=>'string|required',
@@ -27,6 +35,8 @@ class EventController extends Controller
 
     public function join(Event $event)
     {
+        $id = Auth::id();
         Auth::user()->inEvents()->attach($event->id);
+        return redirect("/Profiles/$id/Events");
     }
 }

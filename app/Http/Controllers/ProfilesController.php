@@ -12,6 +12,11 @@ class ProfilesController extends Controller
        // $user = User::find($id);
     return view('Profile',['user'=>$user]);
     }
+
+    public function showEvents(User $user)
+    {
+        return view('UserEvents',['user'=>$user]);
+    }
  public function edit(User $user)
  {
     //  $user = User::find($id);

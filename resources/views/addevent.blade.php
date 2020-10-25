@@ -21,7 +21,7 @@
             <!-- <div class="highlights"> -->
             <!-- 1 -->
             <div class="addevent-form" >
-                <form method="post" action="/Event">
+                <form method="post" action="/Event/Create">
                     @csrf
                     <p class="event_info">
                         <label class="event_name" for="event_name">Enter the event name :

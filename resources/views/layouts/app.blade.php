@@ -28,30 +28,34 @@
                 <ul class="nav__links">
                     <li><a href="/home">Home</a></li>
                     @auth
-                    <li><a href="#">Events</a></li>
+                        @if (Auth::user()->role == 'Orgnaization')
+                            <li><a href="/Event/Create">Create Event</a></li>
+                        @else
+                            <li><a href="/Profile/{{Auth::user()->id}}/Events">Events</a></li>
+                        @endif
                 <li><a href="/Profile/{{Auth::User()->id}}">My Profile</a></li>
                     @endauth
                     <li><a href="#">Contact us</a></li>
                 </ul>
-    
+
             </nav>
             <div class="btns">
                 @guest
-                
+
                     <a class="btn" href="{{ route('login') }}">{{ __('Login') }}</a>
-                
+
                 @if (Route::has('register'))
-                    
+
                         <a class="btn" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    
+
                 @endif
             @else
-                
+
                     <a id="navbarDropdown" class="hello" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
 
-                    
+
                         <a class="btn" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
@@ -61,8 +65,8 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
-                    
-                
+
+
             @endguest
                 {{-- <a class="hello" href=#>Hello Khalid </a>
                 <a class="btn" href="/signin.html">Log out</a>  --}}
@@ -71,9 +75,9 @@
                     {{ session('status') }}
                 </div>
                 @endif
-                
+
             </div>
-    
+
         </div>
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
