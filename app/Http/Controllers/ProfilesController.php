@@ -15,7 +15,8 @@ class ProfilesController extends Controller
 
     public function showEvents(User $user)
     {
-        return view('UserEvents',['user'=>$user]);
+        $events = $user->role==='Orgnaization'?$user->organizedEvents:$user->inEvents;
+        return view('UserEvents',['user'=>$user,'events'=>$events]);
     }
  public function edit(User $user)
  {

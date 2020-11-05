@@ -20,11 +20,16 @@
     <section class="wrapper">
         <div class="inner">
             <center><p class="h-title">{{$user->name}}'s Events :</p></center>
-
+            <div class="col-4 text-right">
+                @if ($user->role==='Orgnaization'&& Auth::User()->id == $user->id)
+                    <a href="/Event/Create" class="btn btn-sm btn-primary">Create Event</a>
+                @endif
+            </div>
             <div class="highlights">
 
+
                 <!-- Events Card (each section has one event card .. ) -->
-                @forelse($user->inEvents as $event)
+                @forelse( $events as $event)
                     <section>
                         <div class="content">
                             <div class="Events_card">
@@ -38,9 +43,9 @@
                                         <p id="Event_dates" class="icon  fa-calendar " style="font-size: large"> {{$event->start_date->format('d M ') }} @if($event->start_date->format('d M') != $event->end_date->format('d M')) - {{$event->end_date->format('d M ')}} @endif</p>
                                     </div>
                                 </div>
-                                @unless(Auth::user()->inEvents()->find($event->id))
-                                    <a href="/Event/{{$event->id}}"><button class="joiniing" >Join this event</button></a>
-                                @endunless
+
+                                    <a href="/Event/{{$event->id}}"><button class="joiniing" >Show more</button></a>
+
                             </div>
                         </div>
                     </section>

@@ -172,7 +172,7 @@
 
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <link href="{{ asset('css/cards.css') }}" rel="stylesheet">
-        
+
 
 
     </head>
@@ -220,9 +220,7 @@
                                         <p id="volunteer_numbers" class="icon fa-users" style="font-size: large">
                                             {{$event->required_volunteers}}</p>
                                         <p id="Event_dates" class="icon  fa-calendar " style="font-size: large">
-                                            {{$event->start_date->format('d M ') }} @if($event->start_date->format('d
-                                            M') != $event->end_date->format('d M')) -
-                                            {{$event->end_date->format('d M ')}} @endif</p>
+                                            {{$event->start_date->format('d M ') }} @if($event->start_date->format('d M') != $event->end_date->format('d M')) - {{$event->end_date->format('d M ')}} @endif</p>
 
                                         {{-- <p class="Event_title1"> Event Title </p> --}}
                                         {{-- <p class="Event_dis1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s </p> --}}
@@ -231,12 +229,10 @@
                                         {{-- <a href="/Event/"><button class="joiniing" >Join this event</button></a> --}}
 
                                     </div>
-                                    @unless(Auth::user()->inEvents()->find($event->id))
-                                    <a href="/Event/{{$event->id}}"><button class="joiniing">Join this
-                                            event</button></a>
+                                    <a href="/Event/{{$event->id}}"><button class="joiniing">Show more</button></a>
 
 
-                                    @endunless
+
                                 </div>
 
                             </div>
@@ -250,7 +246,7 @@
         </section>
 
         {{-- Eventpage --}}
-       
+
 
         <!-- CTA -->
         <section id="cta" class="wrapper">

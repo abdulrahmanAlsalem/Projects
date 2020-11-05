@@ -28,11 +28,7 @@
                 <ul class="nav__links">
                     <li><a href="/home">Home</a></li>
                     @auth
-                        @if (Auth::user()->role == 'Orgnaization')
-                            <li><a href="/Event/Create">Create Event</a></li>
-                        @else
-                            <li><a href="/Profile/{{Auth::user()->id}}/Events">Events</a></li>
-                        @endif
+                            <li><a href="/Profile/{{Auth::user()->id}}/Events">My Events</a></li>
                 <li><a href="/Profile/{{Auth::User()->id}}">My Profile</a></li>
                     @endauth
                     <li><a href="#">Contact us</a></li>

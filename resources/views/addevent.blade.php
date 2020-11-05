@@ -17,44 +17,44 @@
 
     <section class="wrapper">
         <div class="inner">
-            <center><p class="h2-title">Create a new event </p></center>
+            <center><p class="h2-title">Create a New Event </p></center>
             <!-- <div class="highlights"> -->
             <!-- 1 -->
             <div class="addevent-form" >
                 <form method="post" action="/Event/Create">
                     @csrf
                     <p class="event_info">
-                        <label class="event_name" for="event_name">Enter the event name :
-                            <input type="text" id="eventname" name="event_name" placeholder=""></label>
+                        <label class="event_dis" for="event_name">Enter The Event Name :
+                            <input type="text" id="eventname" name="event_name" value="{{old('event_name')}}"></label>
                         @error('event_name')
                         <strong style="color: crimson">{{$message}}</strong><br>
                         @enderror
-                        <label class="event_dis" for="eventdis">Write a description of the event :
-                            <textarea name="event_dis" id="event_dis" cols="30" rows="3"></textarea></label>
-                        @error('event_place')
+                        <label class="event_dis" for="eventdis">Write a Description of The Event :
+                            <textarea name="event_description" id="event_dis" cols="30" rows="3">{{old('event_description')}}</textarea></label>
+                        @error('event_description')
                         <strong style="color: crimson">{{$message}}</strong><br>
                         @enderror
-                        <label class="event_date" for="star_tdate">Event Start date
-                            <input name="start_date" type="date"></label>
+                        <label class="event_date" for="star_tdate">Event Start Date
+                            <input name="start_date" type="date" value="{{old('start_date')}}"></label>
                         @error('start_date')
                         <strong style="color: crimson">{{$message}}</strong><br>
                         @enderror
-                        <label class="event_date" for="end_date">Event End date
-                            <input name="end_date" type="date"></label>
+                        <label class="event_date" for="end_date">Event End Date
+                            <input name="end_date" type="date"value="{{old('end_date')}}"></label>
                         @error('end_date')
                         <strong style="color: crimson">{{$message}}</strong><br>
                         @enderror
-
-                        <label class="Volunteernumber" for="Volunteernumber">How many Volunteers do you need?
-                            <input class="input_num" type="number" name="Volunteernumber"></label>
-                        @error('Volunteernumber')
+                        <br>
+                        <label class="Volunteernumber" for="Volunteernumber">How many Volunteers needed?
+                            <input class="input_num" type="number" name="number_of_volunteers" value="{{old('number_of_volunteers')}}"></label>
+                        @error('number_of_volunteers')
                         <strong style="color: crimson">{{$message}}</strong><br>
                         @enderror
 
                     </p>
 
 
-                    <input class="submiteventform" type="submit" value="Submit Now">
+                    <input class="submiteventform" type="submit" value="Submit">
                 </form>
             </div>
 
