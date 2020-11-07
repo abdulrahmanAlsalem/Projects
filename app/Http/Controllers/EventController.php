@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
-    public function show(Event $event = null)
+    public function show() //Event $event = null
     {
-      return view('eventpage',['event'=>$event]);
+        return view('eventpage');
+      //return view('eventpage',['event'=>$event]);
     }
     public function create(){
         return view('addevent');
@@ -37,5 +41,18 @@ class EventController extends Controller
         $id = Auth::id();
         Auth::user()->inEvents()->attach($event->id);
         return redirect("/Profile/$id/Events");
+    }
+
+    public function delete(Event $event)
+    {
+        if(Auth::user()->role == 'Orgnaization') {
+            Validator::validate(['start_date'=>$event->start_date->subDay(),'now'=>now()],['now'=>'before:start_date'],['before'=>'This Event Starts Tomorrow And Can Not Be Deleted']);
+            Auth::user()->organizedEvents->find($event->id)->delete();
+            return redirect("/Profile/".Auth::id()."/Events");
+        }else {
+            Validator::validate(['start_date'=>$event->start_date->subDays(3),'now'=>now()],['now'=>'before:start_date'],['before'=>'This Event Starts In Three Days And Can Not Be Dropped']);
+            Auth::user()->inEvents()->detach($event->id);
+            return redirect("/Profile/".Auth::id()."/Events");
+        }
     }
 }

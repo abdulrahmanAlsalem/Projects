@@ -1,4 +1,26 @@
 @extends('layouts.app')
+@section('header')
+<script>
+    function confirmation(caller){
+        let msg;
+        let form;
+        switch (caller.value){
+            case 'Delete Event' :
+                msg = 'Are You Sure You Want To Delete This Event?';
+                form = 'Delete';
+                break;
+            case 'Drop Out' :
+                msg = 'Are You Sure You Want To Drop Out Of This Event?';
+                form = 'Drop Out';
+                break;
+        }
+        if(confirm(msg)){
+            document.getElementById(form).submit();
+        }
+    }
+
+</script>
+@endsection
 @section('content')
 
 <head>
@@ -27,18 +49,18 @@
 
 
                       <p class="event_info">
-
+                          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check Out This Event On The Volunteering Platform." data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                   <span>
-                      {{-- <label class="event_name2" >Event Name: {{$event->title}}</label> --}}
+
                       <div class="theEvent">
                       <label class="event_field" >Event Name:
-                      <p class="event_name1">{{$event->title}}</p>
+                      <p class="event_name1">{{$event->title ?? 'some name'}}</p>
                         </label>
                       </div>
-                      {{-- <label class="org_name2" >Organization Name: <a href="/Profile/{{$event->organizer->id}}">{{$event->organizer->name}}</a> </label> --}}
+
                       <div class="theOrg">
                       <label class="org_name2" >Organizer:
-                          <p class="org_name1"><a href="/Profile/{{$event->organizer->id}}">{{$event->organizer->name}}</a></p>
+                          <p class="org_name1"><a href="/Profile/{{$event->organizer->id ?? '#'}}">{{$event->organizer->name ?? 'some name'}}</a></p>
                        </label>
                       </div>
                           <hr>
@@ -47,45 +69,84 @@
 
                     <label class="event_dis" for="eventdis">About the event:
                         <p  class="des_field"   >
-                            {{-- {{$event->description}} --}}
-                            {{$event->description}}
+
+                            {{$event->description ?? 'some description'}}
                         </p>
                     </label>
                       <hr>
                     <span>
 
-                          {{-- <label class="event_date1" for="startdate">Event Start date: {{$event->start_date->format('d M ') }}</label> --}}
+
                           <div class="date1">
-                          <label class="event_date1" for="startdate">Event Start date:
-                              <p class="st_date"> {{$event->start_date->format('d M ') }}</p>
+                          <label class="event_date1" for="startdate">Event Start Date:
+                              <p class="st_date"> {{isset($event) ? $event->start_date->format('d M ') : '9 / 9'}}</p>
                           </label>
                            </div>
 
-                          {{-- <label class="event_date2" for="enddate">Event End date: {{$event->end_date->format('d M')}}</label> --}}
+
                           <div class="date2">
-                          <label class="event_date2" for="enddate">Event End date:
-                              <p class="ed_date">{{$event->end_date->format('d M')}}</p>
+                          <label class="event_date2" for="enddate">Event End Date:
+                              <p class="ed_date">{{isset($event) ? $event->end_date->format('d M') : '9 / 9'}}</p>
                           </label>
                       </div>
 
                     </span>
 
 
-                        {{-- <label class="Volunteernumber" for="Volunteernumber">Number of required volunteers: {{$event->required_volunteers}}</label> --}}
+
                         <div class="num_req">
-                        <label class="Volunteernumber" for="Volunteernumber">Number of required volunteers: </label>
-                        <p class="volunteer_n">{{$event->required_volunteers}}</p>
+                        <label class="Volunteernumber" for="Volunteernumber">Number Of Required Volunteers: </label>
+                        <p class="volunteer_n">{{$event->required_volunteers ?? '5'}}</p>
                       </div>
 
 
                   </p>
-          @unless(Auth::user()->role==='orgnaization' || Auth::user()->inEvents()->find($event->id))
-          <form method="post" action="/Event/{{$event->id}}">
-              @csrf
+{{--          @auth--}}
+{{--          @if(Auth::user()->role==='Volunteer')--}}
+{{--              @if( Auth::user()->inEvents()->find($event->id) )--}}
+{{--                  @if(now() < $event->start_date)--}}
+{{--                  <form id="Drop Out" method="post" action="/Event/{{$event->id}}">--}}
+{{--                      @csrf--}}
+{{--                      @method('delete')--}}
 
-                    <input class="submiteventform" type="submit" value="Join">
-                  </form>
-          @endunless
+{{--                      <input onclick="return confirmation(this)" class="danger_button" type="Button" value="Drop Out">--}}
+{{--                  </form>--}}
+{{--                  @error('now')--}}
+{{--                  <strong style="color: crimson">{{$message}}</strong><br>--}}
+{{--                  @enderror--}}
+{{--                      @endif--}}
+{{--           @elseif($event->participants->count() < $event->required_volunteers)--}}
+{{--          <form method="post" action="/Event/{{$event->id}}">--}}
+{{--              @csrf--}}
+
+{{--                    <input class="form_button" type="submit" value="Join">--}}
+{{--                  </form>--}}
+{{--              @endif--}}
+{{--              @else--}}
+{{--              @if(Auth::id() == $event->organizer_id && now() < $event->start_date)--}}
+{{--                  @foreach($event->participants as $participant)--}}
+{{--                      {{$participant->name}}--}}
+{{--                      @endforeach--}}
+          <div>
+                  <label class ="Volunteernumber"> Participants: </label>
+          @foreach([1,2,3,4,5] as $x)
+              <div>
+                  <p>mohammed{{$x}}&emsp;&emsp;&emsp;05555555555</p>
+              </div>
+          @endforeach
+              </div>
+{{--              <form id="Delete" method="post" action="/Event/{{$event->id}}">--}}
+{{--                  @csrf--}}
+{{--                  @method('delete')--}}
+
+{{--                  <input onclick="return confirmation(this)" class="danger_button" type="button" value="Delete Event"/>--}}
+{{--              </form>--}}
+{{--                  @error('now')--}}
+{{--                  <strong style="color: crimson">{{$message}}</strong><br>--}}
+{{--                  @enderror--}}
+{{--              @endif--}}
+{{--          @endif--}}
+{{--          @endauth--}}
                 </div>
 
           </div>

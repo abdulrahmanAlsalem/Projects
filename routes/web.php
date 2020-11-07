@@ -27,5 +27,7 @@ Route::put('/Profile/{user}',[App\Http\Controllers\ProfilesController::class,'up
 Route::get('/Profile/{user}/Events',[App\Http\Controllers\ProfilesController::class,'showEvents'])->middleware('auth');
 Route::get('Event/Create',[App\Http\Controllers\EventController::class,'create'])->middleware('auth');
 Route::post('/Event/Create',[App\Http\Controllers\EventController::class,'store'])->middleware('auth');
-Route::get('/Event/{event}',[\App\Http\Controllers\EventController::class,'show'])->middleware('auth');
+Route::get('/Event/{event}',[\App\Http\Controllers\EventController::class,'show']);
 Route::post('/Event/{event}',[\App\Http\Controllers\EventController::class,'join'])->middleware('auth');
+Route::delete('/Event/{event}',[\App\Http\Controllers\EventController::class,'delete'])->middleware('auth');
+
