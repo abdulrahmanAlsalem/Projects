@@ -127,11 +127,18 @@
 {{--                  @foreach($event->participants as $participant)--}}
 {{--                      {{$participant->name}}--}}
 {{--                      @endforeach--}}
+                                    <hr>
           <div>
                   <label class ="Volunteernumber"> Participants: </label>
+                  
           @foreach([1,2,3,4,5] as $x)
-              <div>
-                  <p>mohammed{{$x}}&emsp;&emsp;&emsp;05555555555</p>
+          <div class="Participants_list">
+                    
+                  {{-- <p>mohammed{{$x}}&emsp;&emsp;&emsp;05555555555</p> --}}
+                  <ul>
+                    <li><p>Name:</p> Mohammed{{$x}}&emsp;&emsp;&emsp;<p id="vol_numbers">Number:</p>05555555555</li>
+                  </ul>
+
               </div>
           @endforeach
               </div>
